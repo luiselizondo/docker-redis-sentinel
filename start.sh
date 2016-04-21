@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ANNOUNCED_IP=${ANNOUNCED_IP}
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
