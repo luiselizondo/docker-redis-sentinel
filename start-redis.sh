@@ -1,17 +1,16 @@
 #!/bin/bash
 
-ANNOUNCED_IP=${ANNOUNCED_IP}
 ANNOUNCED_PORT=${ANNOUNCED_PORT}
 MASTER_IP=${MASTER_IP}
 MASTER_PORT=${MASTER_PORT}
 REDIS_CONFIGURATION_FILE=/etc/redis.conf
 
-echo "bind ${ANNOUNCED_IP}" > $REDIS_CONFIGURATION_FILE
+echo "bind 0.0.0.0" > $REDIS_CONFIGURATION_FILE
 echo "port ${ANNOUNCED_PORT}" >> $REDIS_CONFIGURATION_FILE
 echo "dir ." >> $REDIS_CONFIGURATION_FILE
 
 if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
-  # This is a slave
+  echo "Redis running as a slave"
   echo "slaveof ${MASTER_IP} ${MASTER_PORT}" >> $REDIS_CONFIGURATION_FILE
 fi
 
